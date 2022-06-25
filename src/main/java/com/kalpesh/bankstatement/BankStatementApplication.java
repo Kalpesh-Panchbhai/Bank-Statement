@@ -58,7 +58,6 @@ public class BankStatementApplication implements CommandLineRunner {
                     boolean dateFound = false;
                     boolean bringingForward = false;
                     Double transactionAmount = null;
-                    Double lastBalance = Double.valueOf("0.0");
                     Double balance = null;
                     boolean balanceFound = false;
                     boolean zeroFound = false;
@@ -98,7 +97,7 @@ public class BankStatementApplication implements CommandLineRunner {
                                             }
 
                                             if (bringingForward) {
-                                                transaction.setBalance(lastBalance = transactionAmount);
+                                                transaction.setBalance(transactionAmount);
                                                 transactionAmount = null;
                                                 dateFound = false;
                                                 bringingForward = false;
@@ -113,7 +112,6 @@ public class BankStatementApplication implements CommandLineRunner {
                                                 }
                                                 transaction.setBalance(balance);
                                                 transactionAmount = null;
-                                                lastBalance = balance;
                                                 balanceFound = false;
                                                 DepositAmount = false;
                                                 zeroFound = false;
